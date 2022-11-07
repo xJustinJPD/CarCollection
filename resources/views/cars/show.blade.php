@@ -46,8 +46,6 @@
         
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                 
-                {{-- image display that was not working for me, explained in video but was pulling
-                 from wrong source instead of storage/images and couldnt figure out how to get working --}}
                 <td rowspan="6">
                     <img src="{{asset('storage/images/' . $car->car_image) }}" width="150"/>
                 </td>

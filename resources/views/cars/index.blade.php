@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            {{-- the session success alert that comes up if the car was succesfully edited --}}
+            {{-- the session success alert that comes up if the car was succesfully deleted --}}
           <x-alert-success>
                 {{ session('success') }}
         </x-alert-success>
@@ -21,7 +21,7 @@
         @forelse ($cars as $car)
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
 
-                    <img src="{{asset('storage/images/' . $car->car_image) }}" />
+                    <img src="{{asset('storage/images/' . $car->car_image) }}" width="150" />
                 
                 
 

@@ -14,7 +14,7 @@
 
                 {{-- form in which the updated car is posted to the database with its new values --}}
                 <form action="{{ route('cars.update', $car) }}" method="post">
-                    {{-- blade method as html does not have a delete function and csrf token --}}
+                    {{-- blade method as html does not have a update function and csrf token --}}
                     @method('put')
                     @csrf
 

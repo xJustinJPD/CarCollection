@@ -32,18 +32,18 @@
                     @enderror
 
                     {{-- model --}}
-                    <x-input type="text" name="model" placeholder="Car Type" class="w-full mt-6" autocomplete="off" :value="@old ('model')">></x-input>
+                    <x-input type="text" name="model" placeholder="Car Type" class="w-full mt-6" autocomplete="off" :value="@old ('model')"></x-input>
                                         @error('model')
                         {{$message}}
                     @enderror
 
                     {{-- colour --}}
-                    <x-input type="text" name="colour" placeholder="Colour" class="w-full mt-6" autocomplete="off" :value="@old ('colour')">></x-input>
+                    <x-input type="text" name="colour" placeholder="Colour" class="w-full mt-6" autocomplete="off" :value="@old ('colour')"></x-input>
                                         @error('colour')
                         {{$message}}
                     @enderror
                     {{-- description --}}
-                    <x-textarea name="desc" rows="10" placeholder="Description of car..."  class="w-full mt-6" :value="@old ('desc')">></x-textarea>
+                    <x-textarea name="desc" rows="10" placeholder="Description of car..."  class="w-full mt-6" :value="@old ('desc')"></x-textarea>
                                         @error('desc')
                         {{$message}}
                     @enderror

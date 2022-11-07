@@ -127,6 +127,6 @@ class CarController extends Controller
 
         $car->delete();
 
-        return to_route('cars.index');
+        return to_route('cars.index')->with('success', 'Car deleted successfully.');
     }
 }

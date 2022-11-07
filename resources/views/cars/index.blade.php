@@ -8,6 +8,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+          <x-alert-success>
+                {{ session('success') }}
+        </x-alert-success>
+
+
         <a href="{{ route('cars.create') }}" class="btn-link btn-lg mb-2">+ New Car</a>
 
         @forelse ($cars as $car)

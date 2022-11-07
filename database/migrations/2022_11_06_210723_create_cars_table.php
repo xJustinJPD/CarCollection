@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        // creating the blueprint for the db to be created by a migration in mySQL, including all relevant and needed values and tables used by the values in the car
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('model');
             $table->longText('desc');
             $table->string('colour');
+            $table->string('car_image');
             $table->timestamps();
         });
     }
@@ -31,6 +33,7 @@ return new class extends Migration
      */
     public function down()
     {
+        // reversing the migration itself
         Schema::dropIfExists('cars');
     }
 };

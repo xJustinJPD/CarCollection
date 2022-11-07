@@ -16,18 +16,27 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+
+                    {{-- links to log in and register which change to cars if user is alrwady logged in on homepage --}}
+
                     @auth
+                        {{-- links to index view --}}
                         <a href="{{ route('cars.index') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Cars</a>
                     @else
+
+                        {{-- links to login view --}}
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
                         @if (Route::has('register'))
+                            {{-- links to register view --}}
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
+
+            {{-- car collection text on homepage --}}
             <h1 class="text-5xl">
             The Car Collection
             </h1>

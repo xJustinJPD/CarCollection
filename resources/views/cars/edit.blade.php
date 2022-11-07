@@ -8,14 +8,19 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-        {{-- <a href="{{ route('cars.create') }}" class="btn-link btn-lg mb-2">+ New Car</a> --}}
 
 
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
 
+                {{-- form in which the updated car is posted to the database with its new values --}}
                 <form action="{{ route('cars.update', $car) }}" method="post">
+                    {{-- blade method as html does not have a delete function and csrf token --}}
                     @method('put')
                     @csrf
+
+                    {{-- inputs for the make,model,colour and description of car --}}
+                    {{-- each has an error message --}}
+                    {{-- make --}}
                     <x-input 
                     type="text" 
                     name="make" 
@@ -26,6 +31,7 @@
                     @error('make')
                         {{$message}}
                     @enderror
+                    {{-- model --}}
                     <x-input 
                     type="text" 
                     name="model" 
@@ -37,6 +43,7 @@
                      @error('model')
                         {{$message}}
                     @enderror
+                    {{-- colour --}}
                     <x-input 
                     type="text" 
                     name="colour" 
@@ -48,6 +55,7 @@
                     @error('colour')
                         {{$message}}
                     @enderror
+                    {{-- description --}}
                     <x-textarea 
                     name="desc" 
                     rows="10" 
@@ -58,6 +66,8 @@
                                         @error('desc')
                         {{$message}}
                     @enderror
+
+                    {{-- save car button --}}
                     <x-button class="mt-6">Save Car</x-button>
 
                  </form>

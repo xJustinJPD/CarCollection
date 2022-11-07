@@ -22,6 +22,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// uses the cars index as the homepage
 Route::resource('/cars', CarController::class)->middleware(['auth']);
 
 // Route::get('/cars',);

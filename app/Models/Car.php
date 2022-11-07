@@ -9,5 +9,6 @@ class Car extends Model
 {
     use HasFactory;
 
+    // unguards data in the object as to let it be shown/changed/deleted
     protected $guarded = [];
 }

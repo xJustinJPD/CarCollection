@@ -145,10 +145,10 @@ class CarController extends Controller
             'model' => $request -> model,
             'colour' => $request -> colour,
             'desc' => $request -> desc
-         ]);
+        ]);
 
         //  giving us the show.blade.php view along with a success tag saying that the update was completed
-         return to_route('cars.show', $car)->with('success', 'Car updated succesfully.');
+        return to_route('cars.show', $car)->with('success', 'Car updated succesfully.');
     }
 
     /**

@@ -9,17 +9,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             {{-- the session success alert that comes up if the car was succesfully deleted --}}
-          <x-alert-success>
+        <x-alert-success>
                 {{ session('success') }}
         </x-alert-success>
 
         {{-- button that links to the create.blade.php view --}}
-        <a href="{{ route('cars.create') }}" class="btn-link btn-lg mb-2">+ New Car</a>
+        <a href="{{ route('cars.create') }}" class="btn-link btn-lg mb-2 my-4">+ New Car</a>
 
         {{-- a for each loop looping through each car and displaying the intended values on the page --}}
 
         @forelse ($cars as $car)
-            <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
+            <div class="my-5 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
 
                     <img src="{{asset('storage/images/' . $car->car_image) }}" width="150" />
                 

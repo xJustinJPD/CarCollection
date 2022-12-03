@@ -52,7 +52,7 @@
 
                     <x-button class="mt-6">Save Car</x-button>
 
-                 </form>
+                </form>
 
 
             </div>

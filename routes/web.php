@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\CarController;
+use App\Http\Controllers\admin\CarController as AdminCarController;
+use App\Http\Controllers\user\CarController as UserCarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,11 @@ Route::resource('/cars', CarController::class)->middleware(['auth']);
 
 
 
+
+
 require __DIR__.'/auth.php';
+
+Route::resource('/admin/cars', AdminCarController::class)->middleware(['auth'])->names('admin.cars');
+
+Route::resource('/user/cars', UserCarController::class)->middleware(['auth'])->names('user.cars')->only(['index', 'show']);
+

@@ -11,4 +11,10 @@ class Car extends Model
 
     // unguards data in the object as to let it be shown/changed/deleted
     protected $guarded = [];
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturer::class);
+    }
+
 }

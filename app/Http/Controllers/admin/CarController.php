@@ -33,6 +33,8 @@ class CarController extends Controller
 
         $cars = Car::paginate(5);
 
+        $cars = Car::with('manufacturer')->get();
+
         // returns the index.blade.php view with the cars variables included in the transaction
 
         return view ('admin.cars.index')->with('cars', $cars);

@@ -40,7 +40,7 @@
                     autocomplete="off" 
                     :value="@old ('model', $car->model)">>
                     </x-input>
-                     @error('model')
+                    @error('model')
                         {{$message}}
                     @enderror
                     {{-- colour --}}

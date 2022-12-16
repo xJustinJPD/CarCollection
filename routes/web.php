@@ -43,6 +43,9 @@ require __DIR__.'/auth.php';
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
+Route::get('/home/manufacturers', [App\Http\Controllers\HomeController::class, 'manufacturerIndex'])->name('home.manufacturer.index');
+
+
 Route::resource('/admin/cars', AdminCarController::class)->middleware(['auth'])->names('admin.cars');
 
 Route::resource('/user/cars', UserCarController::class)->middleware(['auth'])->names('user.cars')->only(['index', 'show']);

@@ -7,6 +7,8 @@ use App\Models\Role;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Manufacturer;
+use App\Http\Controllers\admin\ManufacturerController;
 
 class HomeController extends Controller
 {   
@@ -37,6 +39,20 @@ class HomeController extends Controller
         }
         else if ($user->hasRole('user')){
             $home = 'user.cars.index';
+        }
+        return redirect()->route($home);
+    }
+
+    public function manufacturerIndex (Request $request)
+    {
+        $user = Auth::user();
+        $home = 'home';
+
+        if($user->hasRole('admin')){
+            $home = 'admin.manufacturers.index';
+        }
+        else if ($user->hasRole('user')){
+            $home = 'user.manufacturers.index';
         }
         return redirect()->route($home);
     }

@@ -26,13 +26,13 @@
                     @enderror
 
                     {{-- make --}}
-                    <x-input type="text" name="make" placeholder="Car Model" class="w-full mt-6" autocomplete="off" :value="@old ('make')"></x-input>
+                    <x-input type="text" name="make" placeholder="Car Make" class="w-full mt-6" autocomplete="off" :value="@old ('make')"></x-input>
                     @error('make')
                         {{$message}}
                     @enderror
 
                     {{-- model --}}
-                    <x-input type="text" name="model" placeholder="Car Type" class="w-full mt-6" autocomplete="off" :value="@old ('model')"></x-input>
+                    <x-input type="text" name="model" placeholder="Car Model" class="w-full mt-6" autocomplete="off" :value="@old ('model')"></x-input>
                                         @error('model')
                         {{$message}}
                     @enderror
@@ -47,6 +47,17 @@
                                         @error('desc')
                         {{$message}}
                     @enderror
+
+                    <div class="form-group">
+                    <label for="manufacturer">Manufacturer</label>
+                    <select name="manufacturer_id">
+                        @foreach ($manufacturers as $manufacturer)
+                            <option value="{{$manufacturer->id}}" {{(old('manufacturer_id') == $manufacturer->id) ? "selected" : ""}}>
+                                {{$manufacturer->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                    </div>
 
                     {{-- save car button --}}
 

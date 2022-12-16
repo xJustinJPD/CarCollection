@@ -49,6 +49,10 @@
                 <td rowspan="6">
                     <img src="{{asset('storage/images/' . $car->car_image) }}" width="150"/>
                 </td>
+
+                <p class="mt-2">    <strong>Manufacturer Name</strong> <hr>
+                    {{ Str::limit($car->manufacturer->name, 200)}}
+                </p>
                 
                 {{-- displaying each element of the car --}}
                 <h2 class="font-bold text-4xl"> 

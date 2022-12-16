@@ -20,7 +20,7 @@
 
         @forelse ($cars as $car)
             <div class="my-5 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
-
+                <a href="{{ route('user.cars.show', $car->id) }}">{{ $car->make }}
                     <img src="{{asset('storage/images/' . $car->car_image) }}" width="150" />
                 
                 
@@ -28,6 +28,10 @@
                 <h2 class="font-bold text-2xl"> 
                     <a href="{{ route('user.cars.show', $car->id) }}">{{ $car->make }}</a>
                 </h2>
+
+                <p class="mt-2">    <strong>Manufacturer Name</strong> <hr>
+                    {{ Str::limit($car->manufacturer->name, 200)}}
+                </p>
 
                 <p class="mt-2">
                     {{ Str::limit($car->model, 50)}}
@@ -43,7 +47,7 @@
 
                 {{-- was meant to be a timestamp but was having major issues with errors and couldnt figure out at all how to get working --}}
                 {{-- <p> {{ $car->updated_at->diffForHumans() }} </p> --}}
-
+                </a>
             </div>
 
             {{-- empty function incase of user having no notes --}}

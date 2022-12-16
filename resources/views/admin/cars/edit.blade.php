@@ -67,6 +67,17 @@
                         {{$message}}
                     @enderror
 
+                    {{-- <div class="form-group">
+                    <label for="manufacturer">Manufacturer</label>
+                    <select name="manufacturer_id">
+                        @foreach ($manufacturers as $manufacturer)
+                            <option value="{{$manufacturer->id}}" {{(old('manufacturer_id') == $manufacturer->id) ? "selected" : ""}}>
+                                {{$manufacturer->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                    </div> --}}
+
                     {{-- save car button --}}
                     <x-button class="mt-6">Save Car</x-button>
 

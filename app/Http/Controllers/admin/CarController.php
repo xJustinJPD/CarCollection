@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Car;
-
+use App\Models\Manufacturer;
 
 class CarController extends Controller
 {
@@ -31,9 +31,11 @@ class CarController extends Controller
 
         $user->authorizeRoles('admin');
 
-        $cars = Car::paginate(5);
+        // $cars = Car::paginate(5);
 
-        $cars = Car::with('manufacturer')->get();
+        // $cars = Car::with('manufacturer')->get();
+
+        // $cars = Car::all();
 
         // returns the index.blade.php view with the cars variables included in the transaction
 
@@ -51,7 +53,9 @@ class CarController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        return view ('admin.cars.create');
+        $manufacturers = Manufacturer::all();
+
+        return view ('admin.cars.create')->with('manufacturers',$manufacturers);
     }
 
     /**
@@ -70,7 +74,8 @@ class CarController extends Controller
             'model' => 'required|max:120',
             'colour' => 'required|max:120',
             'desc' => 'required|max:500',
-            'car_image' => 'file|image'
+            'car_image' => 'file|image',
+            'manufacturer_id'=> 'required'
         ]);
 
         // stores the car image file inside the $car_image variable
@@ -90,11 +95,12 @@ class CarController extends Controller
 
         $car = new Car([
             'user_id' => Auth::id(),
-            'make' => $request->make,
+            'name' => $request->make,
             'model'=> $request->model,
             'colour'=> $request->colour,
             'car_image' => $filename,
-            'desc'=> $request->desc
+            'desc'=> $request->desc,
+            'manufacturer_id'=> $request->manufacturer_id,
         ]);
 
         // saves the car
@@ -161,15 +167,15 @@ class CarController extends Controller
             'make' => 'required|max:120',
             'model' => 'required|max:120',
             'colour' => 'required|max:120',
-            'desc' => 'required|max:500'
+            'desc' => 'required|max:500',
         ]);
 
         // defining that inputting each of these values will update its specified value in the database/object
         $car->update([
-            'make'=> $request -> make,
+            'name'=> $request -> make,
             'model' => $request -> model,
             'colour' => $request -> colour,
-            'desc' => $request -> desc
+            'desc' => $request -> desc,
         ]);
 
         $user = Auth::user();

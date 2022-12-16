@@ -31,9 +31,9 @@ class CarController extends Controller
 
         $user->authorizeRoles('user');
 
-        $cars = Car::paginate(5);
+        // $cars = Car::paginate(5);
 
-        $cars = Car::with('manufacturer')->get();
+        // $cars = Car::with('manufacturer')->get();
 
         // returns the index.blade.php view with the cars variables included in the transaction
 

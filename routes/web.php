@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\CarController as AdminCarController;
 use App\Http\Controllers\user\CarController as UserCarController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +25,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // uses the cars index as the homepage
-Route::resource('/cars', CarController::class)->middleware(['auth']);
+// Route::resource('/cars', CarController::class)->middleware(['auth']);
 
 // Route::get('/cars',);
 
@@ -39,6 +40,8 @@ Route::resource('/cars', CarController::class)->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
 Route::resource('/admin/cars', AdminCarController::class)->middleware(['auth'])->names('admin.cars');
 

@@ -13,7 +13,7 @@
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
 
                 {{-- form in which the updated manufacturer is posted to the database with its new values --}}
-                <form action="{{ route('admin.manufacturer.update', $manufacturer) }}" method="post">
+                <form action="{{ route('admin.manufacturers.update', $manufacturer) }}" method="post">
                     {{-- blade method as html does not have a update function and csrf token --}}
                     @method('put')
                     @csrf

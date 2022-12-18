@@ -31,7 +31,7 @@
             <a href="{{route('admin.manufacturers.edit', $manufacturer)}}" class="btn-link ml-auto">Edit Manufacturer</a>
 
             {{-- form designed to delete a note --}}
-            <form action="{{ route('admin.manufacturer.destroy', $manufacturer) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.manufacturers.destroy', $manufacturer) }}" method="post" enctype="multipart/form-data">
             {{-- method and csrf from blade functionality --}}
             @method('delete')
             @csrf

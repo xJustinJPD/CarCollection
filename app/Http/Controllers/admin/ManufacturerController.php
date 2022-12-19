@@ -9,7 +9,8 @@ use App\Models\Car;
 use App\Models\Manufacturer;
 
 class ManufacturerController extends Controller
-{
+{   
+    
     /**
      * Display a listing of the resource.
      *
@@ -63,7 +64,6 @@ class ManufacturerController extends Controller
                 // creates the manufacturer variable as a version of the manufacturer object and sets the parameters for this object
         
                 $manufacturer = new Manufacturer([
-                    'user_id' => Auth::id(),
                     'name' => $request->name,
                     'address'=> $request->address,
 
@@ -78,7 +78,7 @@ class ManufacturerController extends Controller
                 
         
                 // returns the index.blade.php view
-                return to_route('admin.manufacturer.index');
+                return to_route('admin.manufacturers.index');
     }
 
     /**
@@ -123,7 +123,7 @@ class ManufacturerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Manufacturer $manufacturer)
-    {
+    {  
 
                 // validating each field
                 $request->validate([
@@ -133,10 +133,9 @@ class ManufacturerController extends Controller
         
                 // defining that inputting each of these values will update its specified value in the database/object
                 $manufacturer->update([
-                    'name'=> $request -> make,
-                    'model' => $request -> model,
-                    'colour' => $request -> colour,
-                    'desc' => $request -> desc,
+                    'name'=> $request -> name,
+                    'address' => $request -> address,
+                 
                 ]);
         
                 $user = Auth::user();

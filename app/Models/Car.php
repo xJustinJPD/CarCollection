@@ -17,4 +17,8 @@ class Car extends Model
         return $this->belongsTo(Manufacturer::class);
     }
 
+    public function owners()
+    {
+        return $this->belongsToMany(Owner::class)->withTimestamps();
+    }
 }

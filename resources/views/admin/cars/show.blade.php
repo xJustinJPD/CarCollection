@@ -50,6 +50,20 @@
                     <img src="{{asset('storage/images/' . $car->car_image) }}" width="150"/>
                 </td>
 
+                
+                @foreach ($car->owners as $owner)
+                        <tr>
+                            <td class="font-bold"> Owners: </td>
+                            <td> {{$owner->name}} </td>
+                        </tr>
+                @endforeach
+                
+                
+
+                {{-- <p class="mt-2">    <strong>Owner</strong> <hr>
+                    {{ Str::limit($car->owner->name, 200)}}
+                </p> --}}
+
                 <p class="mt-2">    <strong>Manufacturer Name</strong> <hr>
                     {{ Str::limit($car->manufacturer->name, 200)}}
                 </p>

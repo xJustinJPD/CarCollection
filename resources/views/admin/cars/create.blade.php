@@ -59,6 +59,16 @@
                     </select>
                     </div>
 
+                    <div class="form-group">
+                        <label for="owners">
+                            <strong>Owners</strong> <br>
+                        </label>
+                        @foreach ($owners as $owner)
+                            <input type="checkbox", value="{{$owner->id}}" name="owners[]">
+                            {{$owner->name}}
+                        @endforeach
+                    </div>
+
                     {{-- save car button --}}
 
                     <x-button class="mt-6">Save Car</x-button>

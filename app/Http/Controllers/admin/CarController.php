@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Car;
 use App\Models\Manufacturer;
+use App\Models\Owner;
 
 class CarController extends Controller
 {
@@ -20,20 +21,22 @@ class CarController extends Controller
 
         // authenticates that this car is owned by the user using the software
 
-        
+        $user = Auth::user();
+
+        $user->authorizeRoles('admin');
 
         $cars = Car::where('user_id',Auth::id())->latest('updated_at')->paginate(5);
         $cars->each(function($car){
 
         });
 
-        $user = Auth::user();
-
-        $user->authorizeRoles('admin');
-
         // $cars = Car::paginate(5);
 
-        // $cars = Car::with('manufacturer')->get();
+        // $cars = Car::with('manufacturer')
+        // ->with('owners')
+        // ->get();
+
+        // $cars = Car::with('owners')->get();
 
         // $cars = Car::all();
 
@@ -54,8 +57,9 @@ class CarController extends Controller
         $user->authorizeRoles('admin');
 
         $manufacturers = Manufacturer::all();
+        $owners = Owner::all();
 
-        return view ('admin.cars.create')->with('manufacturers',$manufacturers);
+        return view ('admin.cars.create')->with('manufacturers',$manufacturers)->with('owners', $owners);
     }
 
     /**
@@ -128,9 +132,10 @@ class CarController extends Controller
 
         $user = Auth::user();
         $user->authorizeRoles('admin');
+        $owners = Owner::all();
 
 
-        return view ('admin.cars.show')->with('car', $car);
+        return view ('admin.cars.show')->with('car', $car)->with('owners', $owners);
     }
 
     /**

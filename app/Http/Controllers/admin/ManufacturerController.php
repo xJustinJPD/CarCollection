@@ -135,7 +135,7 @@ class ManufacturerController extends Controller
                 $manufacturer->update([
                     'name'=> $request -> name,
                     'address' => $request -> address,
-                 
+                
                 ]);
         
                 $user = Auth::user();

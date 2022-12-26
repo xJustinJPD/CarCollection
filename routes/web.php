@@ -4,6 +4,8 @@ use App\Http\Controllers\admin\CarController as AdminCarController;
 use App\Http\Controllers\user\CarController as UserCarController;
 use App\Http\Controllers\user\ManufacturerController as UserManufacturerController;
 use App\Http\Controllers\admin\ManufacturerController as AdminManufacturerController;
+use App\Http\Controllers\user\OwnerController as UserOwnerController;
+use App\Http\Controllers\admin\OwnerController as AdminOwnerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -47,6 +49,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/home/manufacturers', [App\Http\Controllers\HomeController::class, 'manufacturerIndex'])->name('home.manufacturer.index');
 
+Route::get('/home/owners', [App\Http\Controllers\HomeController::class, 'ownerIndex'])->name('home.owner.index');
 
 Route::resource('/admin/cars', AdminCarController::class)->middleware(['auth'])->names('admin.cars');
 
@@ -56,3 +59,6 @@ Route::resource('/admin/manufacturers', AdminManufacturerController::class)->mid
 
 Route::resource('/user/manufacturers',UserManufacturerController::class)->middleware(['auth'])->names('user.manufacturers')->only(['index', 'show']);
 
+Route::resource('/admin/owners', AdminOwnerController::class)->middleware(['auth'])->names('admin.owners');
+
+Route::resource('/user/owners',UserOwnerController::class)->middleware(['auth'])->names('user.owners')->only(['index', 'show']);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Owner;
@@ -18,13 +18,13 @@ class OwnerController extends Controller
     {
         $user = Auth::user();
 
-        $user->authorizeRoles('admin');
+        $user->authorizeRoles('user');
 
         $owners = Owner::all();
 
         $owners = Owner::paginate(2);
 
-        return view ('admin.owners.index')->with('owners', $owners);
+        return view ('user.owners.index')->with('owners', $owners);
     }
 
     /**
@@ -36,11 +36,11 @@ class OwnerController extends Controller
     {
                         // returns the create.blade.php view
                         $user = Auth::user();
-                        $user->authorizeRoles('admin');
+                        $user->authorizeRoles('user');
                 
                         $owners = Owner::all();
                 
-                        return view ('admin.owners.create')->with('owners',$owners);
+                        return view ('user.owners.create')->with('owners',$owners);
     }
 
     /**
@@ -71,12 +71,12 @@ class OwnerController extends Controller
                         $owner->save();
                 
                         $user = Auth::user();
-                        $user->authorizeRoles('admin');
+                        $user->authorizeRoles('user');
                 
                         
                 
                         // returns the index.blade.php view
-                        return to_route('admin.owners.index');
+                        return to_route('user.owners.index');
     }
 
     /**
@@ -89,13 +89,13 @@ class OwnerController extends Controller
     {
         $user = Auth::user();
 
-        $user->authorizeRoles('admin');
+        $user->authorizeRoles('user');
 
         if(!Auth::id()) {
             return abort(403);
         }
 
-        return view ('admin.owners.show')->with('owner',$owner);
+        return view ('user.owners.show')->with('owner',$owner);
     }
 
     /**
@@ -107,9 +107,9 @@ class OwnerController extends Controller
     public function edit(Owner $owner)
     {
         $user = Auth::user();
-        $user->authorizeRoles('admin');
+        $user->authorizeRoles('user');
 
-        return view ('admin.owners.edit')->with('owner', $owner);
+        return view ('user.owners.edit')->with('owner', $owner);
     }
 
     /**
@@ -135,10 +135,10 @@ class OwnerController extends Controller
                         ]);
                 
                         $user = Auth::user();
-                        $user->authorizeRoles('admin');
+                        $user->authorizeRoles('user');
                 
                         //  giving us the show.blade.php view along with a success tag saying that the update was completed
-                        return to_route('admin.owners.show', $owner)->with('success', 'Owner updated succesfully.');
+                        return to_route('user.owners.show', $owner)->with('success', 'Owner updated succesfully.');
     }
 
     /**
@@ -153,9 +153,9 @@ class OwnerController extends Controller
                         $owner->delete();
         
                         $user = Auth::user();
-                        $user->authorizeRoles('admin');
+                        $user->authorizeRoles('user');
                 
                         // returning the index view with a successful delete messge
-                        return to_route('admin.owners.index')->with('success', 'Owner deleted successfully.');
+                        return to_route('user.owners.index')->with('success', 'Owner deleted successfully.');
     }
 }

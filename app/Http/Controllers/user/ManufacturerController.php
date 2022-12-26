@@ -18,7 +18,15 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        $user->authorizeRoles('user');
+
+        $manufacturers = Manufacturer::all();
+
+        $manufacturers = Manufacturer::paginate(2);
+
+        return view ('user.manufacturers.index')->with('manufacturers', $manufacturers);
     }
 
     /**

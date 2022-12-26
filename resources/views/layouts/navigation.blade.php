@@ -20,6 +20,10 @@
                         {{ __('Manufacturers') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('home.owner.index')" :active="request()->routeIs('home.owner.index')">
+                        {{ __('Owners') }}
+                    </x-nav-link>
+
                 </div>
 
             </div>
